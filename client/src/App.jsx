@@ -8,7 +8,7 @@ import NutritionCalculator from './components/nutrition/Calculator';
 import FoodDatabase from './components/food/FoodDatabase';
 import NutrientInfo from './components/nutrition/NutrientInfo';
 import UserProfile from './components/profile/UserProfile';
-import Navbar from 'components/common/Navbar.jsx';
+import Navbar from './components/common/Navbar.jsx';
 import './App.css';
 
 function App() {
