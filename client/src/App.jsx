@@ -1,70 +1,43 @@
-import { useState, useContext } from 'react';
+// src/App.js
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { DarkModeProvider } from './context/DarkModeContext';
-import Login from './components/auth/Login';
-import Register from './components/auth/Register';
-import NutritionCalculator from './components/nutrition/Calculator';
-import FoodDatabase from './components/food/FoodDatabase';
-import NutrientInfo from './components/nutrition/NutrientInfo';
-import UserProfile from './components/profile/UserProfile';
-import Navbar from './components/common/Navbar.jsx';
+import Navbar from './components/common/Navbar';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Calculator from './pages/Calculator';
+import FoodDatabase from './pages/FoodDatabase';
+import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 import './App.css';
 
 function App() {
   return (
-    <DarkModeProvider>
+    <Router>
       <AuthProvider>
-        <Router>
+        <DarkModeProvider>
           <div className="app-container">
             <Navbar />
-            <main className="container">
+            <main className="main-content">
               <Routes>
+                <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/calculator" element={<NutritionCalculator />} />
+                <Route path="/calculator" element={<Calculator />} />
                 <Route path="/foods" element={<FoodDatabase />} />
-                <Route path="/nutrients" element={<NutrientInfo />} />
-                <Route path="/profile" element={<UserProfile />} />
-                <Route path="/" element={<Home />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
-            <Footer />
+            <footer className="app-footer">
+              <p>&copy; {new Date().getFullYear()} NutriTrack</p>
+            </footer>
           </div>
-        </Router>
+        </DarkModeProvider>
       </AuthProvider>
-    </DarkModeProvider>
-  );
-}
-
-function Home() {
-  const { isAuthenticated } = useContext(AuthContext);
-  
-  return (
-    <section className="section">
-      <h2>Welcome to NutriTrack</h2>
-      {!isAuthenticated && (
-        <div className="auth-actions">
-          <Link to="/login" className="btn">Login</Link>
-          <Link to="/register" className="btn">Register</Link>
-        </div>
-      )}
-    </section>
-  );
-}
-
-function Footer() {
-  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
-  
-  return (
-    <footer>
-      <div className="container">
-        <p>&copy; 2023 NutriTrack</p>
-        <button onClick={toggleDarkMode} className="btn btn-mode">
-          {darkMode ? 'Light Mode' : 'Dark Mode'}
-        </button>
-      </div>
-    </footer>
+    </Router>
   );
 }
 
