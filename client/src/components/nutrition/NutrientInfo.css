@@ -1,0 +1,27 @@
+/* client/src/components/nutrition/NutrientInfo.css */
+.nutrient-container {
+          padding: 1rem;
+          margin: 1rem 0;
+          background: var(--white);
+          border-radius: 8px;
+        }
+        
+        .tabs {
+          display: flex;
+          margin-bottom: 1rem;
+        }
+        
+        .tab {
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+          border-bottom: 2px solid transparent;
+        }
+        
+        .tab.active {
+          border-color: var(--primary);
+          font-weight: bold;
+        }
+        
+        .tab-content {
+          padding: 1rem;
+        }
