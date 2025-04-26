@@ -1,0 +1,18 @@
+{
+          "name": "nutrition-tracker",
+          "version": "1.0.0",
+          "scripts": {
+            "install-all": "npm run install-client && npm run install-server",
+            "install-client": "cd client && npm install",
+            "install-server": "cd server && npm install",
+            "build": "cd client && npm run build",
+            "start": "cd server && node server.js",
+            "dev": "concurrently \"cd client && npm start\" \"cd server && nodemon server.js\""
+          },
+          "dependencies": {
+            "concurrently": "^8.2.1"
+          },
+          "engines": {
+            "node": "18.x"
+          }
+        }
