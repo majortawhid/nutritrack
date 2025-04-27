@@ -92,3 +92,6 @@ async function verifyToken(token) {
 
   return await response.json();
 }
+
+// Add explicit export for AuthContext
+export { AuthContext };
