@@ -8,7 +8,7 @@ import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import User from './models/User.js';
+const User = require('./models/User.js');
 const Food = require('./models/Food.js');
 const Nutrient = require('./models/Nutrient.js');
 import auth from './middleware/auth.js';
