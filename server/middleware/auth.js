@@ -1,20 +1,20 @@
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+import jwt from 'jsonwebtoken';
+import User from '../models/User';
 
-module.exports = async (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
   try {
     // 1. Get token from header
     const token = req.header('Authorization')?.replace('Bearer ', '');
-    
+
     if (!token) {
       return res.status(401).json({ message: 'No token, authorization denied' });
     }
 
     // 2. Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
+
     // 3. Find user and attach to request
-    const user = await User.findOne({ 
+    const user = await User.findOne({
       _id: decoded.userId,
       // You could add additional checks here like:
       // 'tokens.token': token // For token invalidation
@@ -32,3 +32,5 @@ module.exports = async (req, res, next) => {
     res.status(401).json({ message: 'Token is not valid' });
   }
 };
+
+export default authMiddleware;
