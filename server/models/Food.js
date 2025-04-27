@@ -68,4 +68,4 @@ foodSchema.pre('save', function(next) {
 // Text index for search
 foodSchema.index({ name: 'text', category: 'text' });
 
-module.exports = mongoose.model('Food', foodSchema);
+export default mongoose.model('Food', foodSchema);

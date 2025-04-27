@@ -9,7 +9,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import User from './models/User.js';
-import { default as Food } from './models/Food.js';
+const Food = require('./models/Food.js');
 import Nutrient from './models/Nutrient.js';
 import auth from './middleware/auth.js';
 
