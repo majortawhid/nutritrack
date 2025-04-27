@@ -9,8 +9,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import User from './models/User.js';
-const Food = require('./models/Food.js');
-const Nutrient = require('./models/Nutrient.js');
+import Food from './models/Food.js';
+import Nutrient from './models/Nutrient.js';
 import auth from './middleware/auth.js';
 
 const __filename = fileURLToPath(import.meta.url);
