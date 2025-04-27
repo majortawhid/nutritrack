@@ -1,10 +1,20 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const cors = require('cors');
-const path = require('path');
+import dotenv from 'dotenv';
+dotenv.config();
+import express from 'express';
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+import User from './models/User.js';
+import Food from './models/Food.js';
+import Nutrient from './models/Nutrient.js';
+import auth from './middleware/auth.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,14 +31,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/nutritrack-reac
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
-
-// Models
-const User = require('./models/User');
-const Food = require('./models/Food');
-const Nutrient = require('./models/Nutrient');
-
-// Auth Middleware
-const auth = require('./middleware/auth');
 
 // API Routes
 app.post('/api/register', async (req, res) => {
