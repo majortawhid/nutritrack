@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-import User from path.join(__dirname, '../models/User.js');
+import User from '../models/User.js';
 
 const authMiddleware = async (req, res, next) => {
   try {
