@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url';
 const User = require('./models/User.js');
 const Food = require('./models/Food.js');
 const Nutrient = require('./models/Nutrient.js');
-import auth from './middleware/auth.js';
+const auth = require('./middleware/auth.js');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
