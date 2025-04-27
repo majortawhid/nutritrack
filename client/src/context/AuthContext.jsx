@@ -1,6 +1,7 @@
 // src/context/AuthContext.jsx
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { loginUser, registerUser } from '../services/auth';
 
 const AuthContext = createContext();
 
@@ -70,36 +71,24 @@ export function useAuth() {
   return context;
 }
 
-// Mock API functions - replace with real API calls
+// Replace mock API functions with real API calls
 async function authenticateUser(credentials) {
-  // In a real app, this would be an API call
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        token: 'mock-jwt-token',
-        user: {
-          id: 'user-123',
-          email: credentials.email,
-          profile: {
-            name: 'Test User'
-          }
-        }
-      });
-    }, 500);
-  });
+  return await loginUser(credentials);
 }
 
 async function verifyToken(token) {
-  // Verify token with backend
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        id: 'user-123',
-        email: 'test@example.com',
-        profile: {
-          name: 'Test User'
-        }
-      });
-    }, 500);
+  // Implement token verification logic with backend
+  const response = await fetch(`${process.env.REACT_APP_API_URL}/verify-token`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
   });
+
+  if (!response.ok) {
+    throw new Error('Token verification failed');
+  }
+
+  return await response.json();
 }
