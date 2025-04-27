@@ -6,7 +6,7 @@ import { DarkModeProvider } from './context/DarkModeContext';
 import Navbar from './components/common/Navbar';
 import Home from './pages/Home';
 import Login from './components/auth/Login';
-import Register from './pages/Register';
+import Register from './components/auth/Register';
 import Calculator from './pages/Calculator';
 import FoodDatabase from './pages/FoodDatabase';
 import Profile from './pages/Profile';
