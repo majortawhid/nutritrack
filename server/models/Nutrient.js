@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const nutrientSchema = new mongoose.Schema({
   name: {
@@ -35,4 +35,5 @@ const nutrientSchema = new mongoose.Schema({
   timestamps: true
 });
 
-module.exports = mongoose.model('Nutrient', nutrientSchema);
+const Nutrient = mongoose.model('Nutrient', nutrientSchema);
+export default Nutrient;
