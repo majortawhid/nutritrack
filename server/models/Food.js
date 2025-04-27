@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const nutrientSchema = new mongoose.Schema({
   protein: { type: Number, min: 0, default: 0 },
