@@ -3,7 +3,6 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useDarkMode } from '../../context/DarkModeContext';
-import './Navbar.css'; // Create this file for styles
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -16,37 +15,37 @@ const Navbar = () => {
   };
 
   return (
-    <header className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
+    <header className="bg-green-600 text-white shadow-md">
+      <div className="container mx-auto flex justify-between items-center py-4 px-6">
+        <Link to="/" className="text-2xl font-bold">
           NutriTrack
         </Link>
 
-        <nav className="navbar-links">
+        <nav className="flex items-center space-x-4">
           {user ? (
             <>
-              <Link to="/calculator" className="navbar-link">
+              <Link to="/calculator" className="hover:text-gray-200">
                 Calculator
               </Link>
-              <Link to="/foods" className="navbar-link">
+              <Link to="/foods" className="hover:text-gray-200">
                 Food Database
               </Link>
-              <Link to="/profile" className="navbar-link">
+              <Link to="/profile" className="hover:text-gray-200">
                 Profile
               </Link>
               <button 
                 onClick={handleLogout} 
-                className="navbar-button"
+                className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded"
               >
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="navbar-link">
+              <Link to="/login" className="hover:text-gray-200">
                 Login
               </Link>
-              <Link to="/register" className="navbar-link">
+              <Link to="/register" className="hover:text-gray-200">
                 Register
               </Link>
             </>
@@ -54,7 +53,7 @@ const Navbar = () => {
           
           <button
             onClick={toggleDarkMode}
-            className="dark-mode-toggle"
+            className="text-xl focus:outline-none"
             aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           >
             {darkMode ? '☀️' : '🌙'}

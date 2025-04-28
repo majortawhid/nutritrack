@@ -1,3 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add any custom styles below */
+
 /* src/index.css */
 
 /* Base Reset & Variables */
